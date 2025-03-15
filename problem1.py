@@ -10,12 +10,20 @@ def is_multisubset(a,b):
           return False   
      
 
-a = {'a': 2, 'b': 1}
-b = {'a': 3, 'b': 1, "c": 5}
+def read_parts_list(filename):
+     data = {}
+     try:
+          with open(filename) as file:
+               for line in file:
+                    (key, val) = line.split()
+                    val = int(val)
 
-print(is_multisubset(a, b))
+                    data[key] = data.get(key, 0) + val
+     except FileNotFoundError:
+          print(f"File {file} not found")
+     except ValueError:
+          print(f"Invalid data format in {line}")
+     return data
 
-a = {'a': 9, 'b': 7}
-print(is_multisubset(a, b))
-b = {}
-print(is_multisubset(a,b))
+
+print(read_parts_list('collection1.txt'))
