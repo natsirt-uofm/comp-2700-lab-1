@@ -9,7 +9,7 @@ def is_multisubset(a, b):
             return False
     return True  
 
-# Problem 2 
+# Problem 2
 def read_parts_list(filename):
     """
     Reads a parts list from a file and returns a dictionary mapping part names to their quantities.
@@ -27,6 +27,7 @@ def read_parts_list(filename):
         print(f"Invalid data format in {line}")  # Handle incorrect formatting
     return data  
 
+# Problem 3
 def get_missing_parts(goal, inventory):
     """
     Compares `goal` (desired parts list) with `inventory` and returns a dictionary of 
@@ -38,3 +39,26 @@ def get_missing_parts(goal, inventory):
     # Compute missing quantities
     return {part: goal[part] - inventory.get(part, 0) for part in goal if inventory.get(part, 0) < goal[part]}
 
+# Problem 4
+
+# Read parts lists from files
+parts1 = read_parts_list('collection1.txt')
+parts2 = read_parts_list('collection2.txt')
+parts3 = read_parts_list('collection3.txt')
+parts4 = read_parts_list('collection4.txt')
+parts5 = read_parts_list('collection5.txt')
+parts6 = read_parts_list('collection6.txt')
+
+
+print(is_multisubset(parts1, parts2))
+print(is_multisubset(parts1, parts3))
+print(is_multisubset(parts2, parts3))
+print(is_multisubset(parts3, parts3))
+print(is_multisubset(parts3, parts1))
+print(is_multisubset(parts3, parts2))
+print(is_multisubset(parts6, parts4))
+print(is_multisubset(parts6, parts5))
+
+print(get_missing_parts(parts3, parts3))
+print(get_missing_parts(parts6, parts4))
+print(get_missing_parts(parts6, parts5))
